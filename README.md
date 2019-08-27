@@ -20,7 +20,12 @@ So the key point is to leverage the requirements to each producing day.
 
 ## Requirements
 * 1. A functional **CLI tool** which having two arguments "Pre-Build Days" and "Input CSV file."
-* 2. Functional correct.
+* 2. Testing (Unit Testing& Integration Testing)
+* 3. Handle the exception in a meaningful information.
+
+## Good To Have
+* Other CLI information  (Showing current Processing state, CLI help information etc)
+* Performance tuning options. (Processing Speed, memory usage, etc...)
 
 ## Assumption
 * 1. The single factory has multiple prodcution lines for each product. (multiple demands for different products)
