@@ -21,6 +21,20 @@ The major discussion around is that it's to load the data one-time for all to me
 * No scalibility.
 
 ### Proposal 1. (Process in Streaming)
+Utilize the Producer-Consumer Model.
 * 1. The CLI has the option to sort the input file if it's not sorted well.
 * 2. The application load the file in streaming. Once one factory have the load completed, send this load complete factory to the process component.
 * 3. Once the factory model processed complete, send it to the I/O queue waiting for writing in the outputfile.
+
+#### Diagram
+
+<p align="left">
+  <img src="https://github.com/yuejoo/demo/blob/master/Solution-1.svg">
+</p>
+
+#### Pros:
+* Efficiency while solving large scale of input files.
+* Possible to scale on throttling the loading/processing rate which will free the memroy limitation.
+
+#### Cons:
+* More complicate multi-threading process.
