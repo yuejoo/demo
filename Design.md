@@ -1,6 +1,4 @@
 ## Solutions
-The major discussion around is that it's to load the data one-time for all to memory.
-
 ### Proposal 0. (Process for all)
 * 1. The CLI load the file in memory at one time with structured data model.
 * 2. Porcess the in memory data model.
