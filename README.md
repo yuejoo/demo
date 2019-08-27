@@ -20,11 +20,5 @@ So the key point is to leverage the requirements to each producing day.
 
 ## Assumption
 * 1. The single factory has multiple prodcution lines for each product. (multiple demands for different products)
-* 2. The factory can only produce product during the prebuild days or the days between two demand key dates. There is no chance to make the product line producing for multiple demand orders for a single product. 
-
-## Naive Solution
-* 1. For each product and for each factory we reading the demands sequntially. with utilizing each demands in its' pre-build days or the days between the most recent key day.
-
-
-
-
+* 2. The factory can only produce product during the prebuild days or the days between two demand key dates (for each products). There is no chance to make the product line producing for multiple demand orders for a single product. 
+* 3. Assume input file could have 100,000 lines. 100 x 100 x 100 for site x product x days. 
