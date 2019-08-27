@@ -1,0 +1,38 @@
+## Task BreakDown
+### 1. Setting up the basic evironment. (3~4 hours)
+* Necessary libraies installed.
+* Testing Framework setting up.
+* Basic CLI main function created. 
+
+### 2. Pre-process Components. (4-6 hours)
+The pre-process is single thread process. The function should be staight forward.
+* Design/Implement necessray models. (Easy by using the immutables lib)
+* Design/Implement functional classes. (CSV Parsing, I/O Streaming loading, Internal model factory)
+* Unit tests.
+
+### 3. Post-process Components. (4-6 hours)
+Same as the pre-process components. The post-process is single thread process. This function should be staight forward.
+* Design/Implement necessray models. (Easy by using the immutables lib)
+* Design functional classes.  (CSV creator, I/O Streaming writing)
+* Unit tests.
+
+### 4. Main-process Components. (6-8 hours)
+The Main Process components need thread pool to schedule multiple threading processes.
+* Design functional classes.  (Multi-Threading functions, Business Logic Function(Factory-Scheduler))
+* Unit tests.
+
+### 5. Assembling. (4-6 hours)
+Assembling the components into a functionl task.
+* Components Assembling
+* Unit Testing/Functional testing
+* Bug fix.
+
+### 6. Exception Handling (3~4 hours)
+* Exception Handling check/implemented with correct error information populated.
+
+### 7. Integration Testing (2-8 hours)
+* Integration Testing(Function/Performance) with some generating some sample input.
+* Bug Fix
+
+### 8. Good To Have (TBD)
+* CLI Interface/UI Features (Process status showing, -help information..etc.)
