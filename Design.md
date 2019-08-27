@@ -63,6 +63,7 @@ Utilize the Producer-Consumer Model.
 ### Technologies
 #### Basic
 * Language: Java & Maven
+* JDK.1.8
 #### CLI Libaray (TODO: Compare and decide)
 https://github.com/remkop/picocli/wiki/CLI-Comparison
 #### Testing FrameWork
