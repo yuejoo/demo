@@ -32,9 +32,11 @@
 <p align="left">
   <img src="https://github.com/yuejoo/demo/blob/master/Solution-0.svg">
 </p>
+
 #### Estimates: (Small)
 ##### Pros:
 * Straigt forward. Quick implementation.
+
 ##### Cons:
 * Less efficiency, I/O is empty while processing the data.
 * Memory Limited by the input file size. Even if the desired input file is feasible in memory.
