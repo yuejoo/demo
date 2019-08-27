@@ -1,4 +1,4 @@
-## Solution
+## Solutions
 The major discussion around is that it's to load the data one-time for all to memory.
 
 ### Proposal 0. (Process for all)
@@ -9,6 +9,14 @@ The major discussion around is that it's to load the data one-time for all to me
 <p align="left">
   <img src="https://github.com/yuejoo/demo/blob/master/Solution-0.svg">
 </p>
+
+#### Pros:
+* Straigt forward. Quick implementation.
+
+#### Cons:
+* Less efficiency, I/O is empty while processing the data.
+* Memory Limited by the input file size. Even if the desired input file is feasible in memory.
+* No scalibility.
 
 ### Proposal 1. (Process in Streaming)
 * 1. The CLI has the option to sort the input file if it's not sorted well.
