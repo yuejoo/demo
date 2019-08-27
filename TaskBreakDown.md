@@ -1,4 +1,5 @@
-## Task BreakDown
+## Tasks BreakDown 
+### Total Estimates (5 days (4~7 hours per day))
 ### 1. Setting up the basic evironment. (3~4 hours)
 * Necessary libraies installed.
 * Testing Framework setting up.
@@ -16,7 +17,7 @@ Same as the pre-process components. The post-process is single thread process. T
 * Design functional classes.  (CSV creator, I/O Streaming writing)
 * Unit tests.
 
-### 4. Main-process Components. (6-8 hours)
+### 4. Main-process Components. (4-6 hours)
 The Main Process components need thread pool to schedule multiple threading processes.
 * Design functional classes.  (Multi-Threading functions, Business Logic Function(Factory-Scheduler))
 * Unit tests.
@@ -30,9 +31,9 @@ Assembling the components into a functionl task.
 ### 6. Exception Handling (3~4 hours)
 * Exception Handling check/implemented with correct error information populated.
 
-### 7. Integration Testing (2-8 hours)
-* Integration Testing(Function/Performance) with some generating some sample input.
-* Bug Fix
+### 7. Integration Testing (2 hours)
+* Integration Testing(Function/Performance) with generating some sample input.
+* Bug Fix (TBD)
 
-### 8. Good To Have (TBD)
+### 8. Good To Have (2 hours)
 * CLI Interface/UI Features (Process status showing, -help information..etc.)
