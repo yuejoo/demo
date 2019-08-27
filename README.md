@@ -1,4 +1,5 @@
 # Production Linearity Problem
+# Context
 ## Description
 You are a manufacturing plant manager. Your customer provides forecasts at a few key dates in a cumulative way (meaning that the demand at a later date includes the quantities before that date), and you need to plan your production accordingly.
 However, in order to utilise your production line that is available everyday, you can’t wait until the day of new demands to manufacture the incremental quantity of products. Hence, you will need to “linearise” the quantity across a few pre-defined number of days (“pre-build days”), or the days between two demand key dates, whichever is smaller, for your factories to better plan your production schedule.
@@ -14,9 +15,6 @@ You will export your result to a new CSV file,
 3) Fill up the blank “demand” in between the days.
 Please refer to the file ‘production_linearity.3.csv’ and ‘production_linearity.6.csv’ for examples.
 
-
-# Context
-So the key point is to leverage the requirements to each producing day.
 
 ## Requirements
 * 1. A functional **CLI tool** which having two arguments "Pre-Build Days" and "Input CSV file."
