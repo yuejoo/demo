@@ -19,7 +19,7 @@ Please refer to the file ‘production_linearity.3.csv’ and ‘production_line
 ## Requirements
 * 1. A functional **CLI tool** which having two arguments "Pre-Build Days" and "Input CSV file."
 * 2. Testing (Unit Testing& Integration Testing)
-* 3. Handle the exception in a meaningful information.
+* 3. Handle the exception in a meaningful way.
 
 ## Good To Have
 * Other CLI information  (Showing current Processing state, CLI help information etc)
