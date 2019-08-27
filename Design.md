@@ -1,4 +1,24 @@
 ## Solutions
+
+
+### Techs
+
+#### Language
+Java 
+#### Build
+Maven
+#### CLI Libaray (TODO: Compare and decide)
+https://github.com/remkop/picocli/wiki/CLI-Comparison
+#### Testing FrameWork
+* JUnit Testing
+* in-built CLI Lib's Testing framework
+#### DI Framework
+Dagger or Guice.
+#### Immutables Libaray
+https://immutables.github.io/
+#### Multithreading (TODO:)
+Need some alternatives for using a multithreading work.
+
 ### Proposal 0. (Process for all)
 * 1. The CLI load the file in memory at one time with structured data model.
 * 2. Porcess the in memory data model.
