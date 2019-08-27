@@ -6,6 +6,8 @@ The major discussion around is that it's to load the data one-time for all to me
 * 2. Porcess the in memory data model.
 * 3. Translate the in meory data model to Output file.
 
+#### Diagram
+
 <p align="left">
   <img src="https://github.com/yuejoo/demo/blob/master/Solution-0.svg">
 </p>
