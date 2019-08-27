@@ -1,23 +1,23 @@
+- [Solutions](#solutions)
+  * [Proposal 0. (Process for all)](#proposal-0--process-for-all-)
+    + [Diagram](#diagram)
+    + [Pros:](#pros-)
+    + [Cons:](#cons-)
+  * [Proposal 1. (Process in Streaming)](#proposal-1--process-in-streaming-)
+    + [Diagram](#diagram-1)
+    + [Pros:](#pros--1)
+    + [Cons:](#cons--1)
+  * [Technologies](#technologies)
+    + [Language](#language)
+    + [Build](#build)
+    + [CLI Libaray (TODO: Compare and decide)](#cli-libaray--todo--compare-and-decide-)
+    + [Testing FrameWork](#testing-framework)
+    + [DI Framework](#di-framework)
+    + [Immutables Libaray](#immutables-libaray)
+    + [Multithreading (TODO:)](#multithreading--todo--)
+
+
 ## Solutions
-
-
-### Techs
-
-#### Language
-Java 
-#### Build
-Maven
-#### CLI Libaray (TODO: Compare and decide)
-https://github.com/remkop/picocli/wiki/CLI-Comparison
-#### Testing FrameWork
-* JUnit Testing
-* in-built CLI Lib's Testing framework
-#### DI Framework
-Dagger or Guice.
-#### Immutables Libaray
-https://immutables.github.io/
-#### Multithreading (TODO:)
-Need some alternatives for using a multithreading work.
 
 ### Proposal 0. (Process for all)
 * 1. The CLI load the file in memory at one time with structured data model.
@@ -38,7 +38,7 @@ Need some alternatives for using a multithreading work.
 * Memory Limited by the input file size. Even if the desired input file is feasible in memory.
 * No scalibility.
 
-### Proposal 1. (Process in Streaming)
+### Proposal 1. (Process in Streaming) (Preferred)
 Utilize the Producer-Consumer Model.
 * 1. The CLI has the option to sort the input file if it's not sorted well.
 * 2. The application load the file in streaming. Once one factory have the load completed, send this load complete factory to the process component.
@@ -56,3 +56,22 @@ Utilize the Producer-Consumer Model.
 
 #### Cons:
 * More complicate multi-threading process.
+
+
+### Technologies
+#### Language
+Java 
+#### Build
+Maven
+#### CLI Libaray (TODO: Compare and decide)
+https://github.com/remkop/picocli/wiki/CLI-Comparison
+#### Testing FrameWork
+* JUnit Testing
+* in-built CLI Lib's Testing framework
+#### DI Framework
+Dagger or Guice.
+#### Immutables Libaray
+https://immutables.github.io/
+#### Multithreading (TODO:)
+Need some alternatives for using a multithreading work.
+
