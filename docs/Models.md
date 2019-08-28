@@ -1,3 +1,15 @@
+## Parsing 
+Transfer the table:
+```
+site,product,day,demand
+0032,P001A,0,0
+0032,P001A,1,0
+0032,P001A,2,0
+```
+to Map<SiteName, Map<ProductName, ProductionLine>>
+
+
+
 ## Models
 ```
 // Site
