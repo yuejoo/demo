@@ -1,20 +1,22 @@
 package com.zhaoye.prodlinearity;
 
-import static org.junit.Assert.assertTrue;
+import static org.hamcrest.CoreMatchers.nullValue;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 import org.junit.Test;
 
 /**
  * Unit test for simple Application.
  */
-public class ApplicationTest
+public final class ApplicationTest
 {
     /**
      * Rigorous Test :-)
      */
     @Test
-    public void shouldAnswerWithTrue()
+    public void testApplicationCall()
     {
-        assertTrue( true );
+        Application application = new Application();
+        assertThat(application.call(), nullValue());
     }
 }
