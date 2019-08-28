@@ -8,7 +8,7 @@
 ### 2. Pre-process Components. (3-4 hours)
 The pre-process is single thread process. The function should be staight forward.
 * Design/Implement necessray models. (Easy by using the immutables lib)
-* Design/Implement functional classes. (CSV Parsing, I/O Streaming loading, Internal model factory)
+* Design/Implement functional classes. (CSV Parsing, I/O ~~Streaming loading~~, Internal model factory)
 * Unit tests.
 
 ### 3. Post-process Components. (3-4 hours)
