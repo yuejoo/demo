@@ -5,11 +5,12 @@ import picocli.CommandLine;
 import java.util.concurrent.Callable;
 
 @CommandLine.Command(name = "ProductionLinearity", description = "Production Linearity tool for helping to plan the production.")
-public final class Application implements Callable<Void>
+public final class Application implements Callable<Integer>
 {
-    public static void main(String[] args)
+    public static void main(final String[] args)
     {
-        CommandLine.call(new Application(), args);
+        final int exitCode = new CommandLine(new Application()).execute(args);
+        System.exit(exitCode);
     }
 
     @CommandLine.Option(names = {"-p", "--PreBuildDays"}, description = "The number of pre-build days for production.", required = true)
@@ -22,7 +23,7 @@ public final class Application implements Callable<Void>
     private String outputFilePath;
 
     @Override
-    public Void call() {
-        return null;
+    public Integer call() {
+        return CommandLine.ExitCode.OK;
     }
 }
