@@ -3,24 +3,45 @@
 // Site
 public interface Site {
   String siteName();
-  List<ProductionSchedule> productionSchedules();
+  List<ProductionLine> productionSchedules();
 }
 
-// ProductionDemand
-public interface ProductionDemand {
+// ProductionLine with key days
+public interface ProductionLine {
+  String productName();
+  List<KeyDates> keyDates();
+} 
+
+// ProductionLine with accumulated demands
+public interface ProductionLineWithDemands {
   String productLine();
   List<Demand> demands();
+  List<KeyDayWithDemand> keyDates();
 }
 
-// ProductionSchedule
-public interface ProductionDemandWithSchedule {
+// ProductionLine with produce amount
+public interface ProductionLineWithProduce {
   String productLine();
   List<Demand> demands();
+  List<Produce> produces();
+  List<KeyDates> keyDates();
 }
 
 public interface Demand {
-  Integer amounts;
-  Integer day;
+    Amount amount();
+    Day day();
 }
 
+public interface KeyDayWithDemand {
+    Day day();
+    Demand demand();
+}
+
+public interface Amount {
+    int getValue();
+}
+
+public interface Day {
+    int value();
+}
 ```
