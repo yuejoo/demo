@@ -9,7 +9,10 @@ site,product,day,demand
 to Map<SiteName, Map<ProductName, ProductionLine>>
 
 
-
+Map<SiteName, Map<ProductName, ProductionLine>> 
+to 
+List<Sites>
+ 
 ## Models
 ```
 // Site
