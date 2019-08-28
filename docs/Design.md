@@ -30,7 +30,7 @@
 #### Diagram
 
 <p align="left">
-  <img src="https://github.com/yuejoo/demo/blob/master/Solution-0.svg">
+  <img src="https://github.com/yuejoo/demo/blob/master/docs/Solution-0.svg">
 </p>
 
 #### Estimates: (Small)
@@ -50,7 +50,7 @@ Utilize the Producer-Consumer Model.
 
 #### Diagram
 <p align="left">
-  <img src="https://github.com/yuejoo/demo/blob/master/Solution-1.svg">
+  <img src="https://github.com/yuejoo/demo/blob/master/docs/Solution-1.svg">
 </p>
 
 #### Estimates: (Medium)
