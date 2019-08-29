@@ -28,6 +28,7 @@
       <groupId>org.immutables</groupId>
       <artifactId>value</artifactId>
       <version>2.7.4</version>
+      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>com.google.dagger</groupId>
@@ -39,6 +40,11 @@
       <artifactId>dagger-compiler</artifactId>
       <version>2.24</version>
       <optional>true</optional>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.dataformat</groupId>
+      <artifactId>jackson-dataformat-csv</artifactId>
+      <version>2.8.8</version>
     </dependency>
 
     <!-- Test -->
@@ -147,6 +153,22 @@
             <compilerArgs>
               <arg>-Aproject=${project.groupId}/${project.artifactId}</arg>
             </compilerArgs>
+          </configuration>
+        </plugin>
+
+        <!-- Enabling the Immutables -->
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>3.8.1</version>
+          <configuration>
+            <annotationProcessorPaths>
+              <path>
+                <groupId>org.immutables</groupId>
+                <artifactId>value</artifactId>
+                <version>2.7.4</version>
+              </path>
+            </annotationProcessorPaths>
           </configuration>
         </plugin>
       </plugins>

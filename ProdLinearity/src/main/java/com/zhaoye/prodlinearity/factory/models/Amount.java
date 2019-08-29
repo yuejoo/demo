@@ -1,4 +1,4 @@
-package com.zhaoye.prodlinearity.models;
+package com.zhaoye.prodlinearity.factory.models;
 
 
 import org.immutables.value.Value;
@@ -6,5 +6,5 @@ import org.immutables.value.Value;
 @Value.Immutable
 public interface Amount
 {
-    int getValue();
+    int value();
 }

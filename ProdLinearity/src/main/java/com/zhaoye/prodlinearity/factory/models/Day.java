@@ -1,4 +1,4 @@
-package com.zhaoye.prodlinearity.models;
+package com.zhaoye.prodlinearity.factory.models;
 
 
 import org.immutables.value.Value;
