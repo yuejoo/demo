@@ -10,10 +10,13 @@ import com.zhaoye.prodlinearity.factory.models.Demand;
 import com.zhaoye.prodlinearity.factory.models.ImmutableProductionLine;
 import com.zhaoye.prodlinearity.factory.models.ImmutableProductionLineWithDemands;
 import com.zhaoye.prodlinearity.factory.models.ImmutableProductionLineWithProduces;
+import com.zhaoye.prodlinearity.factory.models.ImmutableSite;
 import com.zhaoye.prodlinearity.factory.models.KeyDayWithDemand;
 import com.zhaoye.prodlinearity.factory.models.Produce;
 import com.zhaoye.prodlinearity.factory.models.Product;
 import com.zhaoye.prodlinearity.factory.models.ProductionLine;
+import com.zhaoye.prodlinearity.factory.models.ProductionLineWithProduces;
+import com.zhaoye.prodlinearity.factory.models.Site;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -43,6 +46,17 @@ public class MockHelper
         }
         mockMap.put(productName, mockSet);
         return mockMap;
+    }
+
+    public static Site generateSite(
+        final String siteName,
+        final List<ProductionLineWithProduces> productionLineWithProduces
+    )
+    {
+        return ImmutableSite.builder()
+            .name(siteName)
+            .productionLines(productionLineWithProduces)
+            .build();
     }
 
     public static ProductionLine generateProductionLine(
@@ -168,6 +182,6 @@ public class MockHelper
         return pojo;
     }
 
-    private static final Random RANDOM = new Random();
-    private static final RandomString RANDOM_STRING = new RandomString(4);
+    public static final Random RANDOM = new Random();
+    public static final RandomString RANDOM_STRING = new RandomString(4);
 }
