@@ -1,18 +1,37 @@
+## Reader
+CS
+
 ## Parsing 
-Transfer the table:
+* Load the table
 ```
 site,product,day,demand
 0032,P001A,0,0
 0032,P001A,1,0
 0032,P001A,2,0
 ```
-to Map<SiteName, Map<ProductName, ProductionLine>>
+* Parsing to the POJO
+```
+class POJO
+{
+    String site; String product; String day; String demand;
+}
+```
+* Convert to the Map
+```
+Map<StringName, Map<StringName, Tree<Pair<Integer, Integer>>>> .
+```
 
+* Looping throught the sites.
+* Convert to the ProductionLines
+```
+Map<ProductName, ProductionLine>> -> List<ProductionLine>
+```
 
-Map<SiteName, Map<ProductName, ProductionLine>> 
-to 
-List<Sites>
- 
+* Plan demand for the ProductionLines
+```
+Map<ProductName, ProductionLine>> -> List<ProductionLineWithDemands>
+```
+
 ## Models
 ```
 // Site
