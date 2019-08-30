@@ -21,7 +21,7 @@ class POJO
 Map<StringName, Map<StringName, Tree<Pair<Integer, Integer>>>> .
 ```
 
-* Looping throught the sites.
+* Looping through the sites.
 * Convert to the ProductionLines
 ```
 Map<ProductName, ProductionLine>> -> List<ProductionLine>
