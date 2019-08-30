@@ -22,7 +22,7 @@
 
 ## Solutions
 
-### Proposal 0. Process for all
+### Proposal 0. Process for all (Choosen)
 * 1. The CLI load the file in memory at one time with structured data model.
 * 2. Porcess the in memory data model.
 * 3. Translate the in meory data model to Output file.
