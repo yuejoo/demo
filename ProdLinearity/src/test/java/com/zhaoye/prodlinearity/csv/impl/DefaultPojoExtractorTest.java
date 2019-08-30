@@ -6,7 +6,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import com.zhaoye.prodlinearity.csv.PojoExtractor;
 import com.zhaoye.prodlinearity.csv.models.CsvContainer;
 import com.zhaoye.prodlinearity.csv.models.ImmutableCsvContainer;
-import com.zhaoye.prodlinearity.csv.models.Pojo;
+import com.zhaoye.prodlinearity.csv.models.InputPojo;
 import com.zhaoye.prodlinearity.helper.MockHelper;
 import java.util.Arrays;
 import java.util.Collection;
@@ -28,7 +28,7 @@ public final class DefaultPojoExtractorTest
 
     @Parameters
     public static Collection getTestParameters() {
-        final List<Pojo> emptyList = Collections.EMPTY_LIST;
+        final List<InputPojo> emptyList = Collections.EMPTY_LIST;
         final CsvContainer emptyCsvContainer =
             ImmutableCsvContainer.builder().value(Collections.EMPTY_MAP).build();
 
@@ -43,21 +43,21 @@ public final class DefaultPojoExtractorTest
     public void testExtract()
     {
         assertThat(
-            pojoExtractor.extract(inputPojos),
+            pojoExtractor.extract(inputInputPojos),
             is(expectedResult)
         );
     }
 
     public DefaultPojoExtractorTest(
-        final List<Pojo> inputPojos,
+        final List<InputPojo> inputInputPojos,
         final CsvContainer expectedResult
     )
     {
-        this.inputPojos = inputPojos;
+        this.inputInputPojos = inputInputPojos;
         this.expectedResult = expectedResult;
     }
 
-    private List<Pojo> inputPojos;
+    private List<InputPojo> inputInputPojos;
     private CsvContainer expectedResult;
     private PojoExtractor pojoExtractor;
 }

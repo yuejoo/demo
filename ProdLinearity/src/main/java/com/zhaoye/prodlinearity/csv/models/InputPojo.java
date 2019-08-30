@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
  * Input Csv file lines POJO.
  */
 @JsonPropertyOrder({ "site", "product", "day", "demand" })
-public class Pojo
+public class InputPojo
 {
     public String site;
     public String product;

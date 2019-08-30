@@ -3,7 +3,7 @@ package com.zhaoye.prodlinearity.helper;
 import com.sun.tools.javac.util.Pair;
 import com.zhaoye.prodlinearity.csv.models.CsvContainer;
 import com.zhaoye.prodlinearity.csv.models.ImmutableCsvContainer;
-import com.zhaoye.prodlinearity.csv.models.Pojo;
+import com.zhaoye.prodlinearity.csv.models.InputPojo;
 import com.zhaoye.prodlinearity.factory.models.Amount;
 import com.zhaoye.prodlinearity.factory.models.Day;
 import com.zhaoye.prodlinearity.factory.models.Demand;
@@ -105,7 +105,7 @@ public class MockHelper
             .build();
     }
 
-    public static ProductionLine generateProductionLineWithProduce(
+    public static ProductionLineWithProduces generateProductionLineWithProduce(
         final String productName,
         final int[] days,
         final int[][] keyDayWithDemands,
@@ -130,7 +130,7 @@ public class MockHelper
     {
         final Object[] pair = new Object[2];
         final Map csvContainerValue = new HashMap();
-        final List<Pojo> pojoList = new LinkedList<>();
+        final List<InputPojo> inputPojoList = new LinkedList<>();
 
         final int numberOfEntries = RANDOM.nextInt(10);
         for(int i = 0; i < numberOfEntries; i++)
@@ -139,7 +139,7 @@ public class MockHelper
             final String product = RANDOM_STRING.nextString();
             final int day = RANDOM.nextInt();
             final int demand = RANDOM.nextInt();
-            pojoList.add(mockPojo(site, product, day, demand));
+            inputPojoList.add(mockPojo(site, product, day, demand));
             addContentToCsvContainerData(
                 csvContainerValue,
                 site,
@@ -149,7 +149,7 @@ public class MockHelper
             );
         }
 
-        pair[0] = pojoList;
+        pair[0] = inputPojoList;
         pair[1] = mockCsvContainer(csvContainerValue);
         return pair;
     }
@@ -172,14 +172,14 @@ public class MockHelper
         csvContainerValue.get(site).get(product).add(new Pair<>(day, demand));
     }
 
-    private static Pojo mockPojo(final String site, final String product, final int day, final int demand)
+    private static InputPojo mockPojo(final String site, final String product, final int day, final int demand)
     {
-        final Pojo pojo = new Pojo();
-        pojo.site = site;
-        pojo.day = day;
-        pojo.demand = demand;
-        pojo.product = product;
-        return pojo;
+        final InputPojo inputPojo = new InputPojo();
+        inputPojo.site = site;
+        inputPojo.day = day;
+        inputPojo.demand = demand;
+        inputPojo.product = product;
+        return inputPojo;
     }
 
     public static final Random RANDOM = new Random();

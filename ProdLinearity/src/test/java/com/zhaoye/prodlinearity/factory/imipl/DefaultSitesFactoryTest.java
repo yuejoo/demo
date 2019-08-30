@@ -18,12 +18,14 @@ import com.zhaoye.prodlinearity.planner.DemandPlanner;
 import com.zhaoye.prodlinearity.planner.PreBuildDayProvider;
 import com.zhaoye.prodlinearity.planner.ProducePlanner;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
+import java.util.stream.Collectors;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -75,9 +77,9 @@ public class DefaultSitesFactoryTest
                 Arrays.asList(
                     ImmutableSite.builder()
                        .name(SITE_NAME)
-                       .productionLines(Arrays.asList(productionLineWithProduce))
+                       .productionLines(productionLineWithProducesList)
                        .build()
-                )
+                ).stream().collect(Collectors.toSet())
             )
         );
     }
@@ -88,7 +90,7 @@ public class DefaultSitesFactoryTest
         Mockito.when(inputCsvContainer.value()).thenReturn(Collections.emptyMap());
         assertThat(
             sitesFactory.create(inputCsvContainer),
-            is(Collections.emptyList())
+            is(Collections.emptySet())
         );
     }
 
@@ -98,7 +100,7 @@ public class DefaultSitesFactoryTest
     private static String SITE_NAME = MockHelper.RANDOM_STRING.nextString();
 
     @Mock private CsvContainer inputCsvContainer;
-    @Mock private List<Site> expectedSites;
+    @Mock private Collection<Site> expectedSites;
 
     @Mock private ProductionLinesFactory productionLinesFactory;
     @Mock private DemandPlanner demandPlanner;

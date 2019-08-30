@@ -4,7 +4,7 @@ import com.sun.tools.javac.util.Pair;
 import com.zhaoye.prodlinearity.csv.PojoExtractor;
 import com.zhaoye.prodlinearity.csv.models.CsvContainer;
 import com.zhaoye.prodlinearity.csv.models.ImmutableCsvContainer;
-import com.zhaoye.prodlinearity.csv.models.Pojo;
+import com.zhaoye.prodlinearity.csv.models.InputPojo;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
@@ -14,16 +14,16 @@ import java.util.TreeSet;
 public final class DefaultPojoExtractor implements PojoExtractor
 {
     @Override
-    public CsvContainer extract(final List<Pojo> pojos)
+    public CsvContainer extract(final List<InputPojo> inputPojos)
     {
         final Map<String, Map<String, TreeSet<Pair<Integer, Integer>>>>
             siteToProductToProductionLineMap = new HashMap<>();
-        for(final Pojo pojo : pojos)
+        for(final InputPojo inputPojo : inputPojos)
         {
-            final String siteName = pojo.site;
-            final String productName = pojo.product;
-            final int demand = pojo.demand;
-            final int day = pojo.day;
+            final String siteName = inputPojo.site;
+            final String productName = inputPojo.product;
+            final int demand = inputPojo.demand;
+            final int day = inputPojo.day;
 
             siteToProductToProductionLineMap.putIfAbsent(siteName, new HashMap<>());
             siteToProductToProductionLineMap.get(siteName).putIfAbsent(

@@ -8,7 +8,7 @@ import com.fasterxml.jackson.dataformat.csv.CsvMapper;
 import com.zhaoye.prodlinearity.csv.CsvFileParser;
 import com.zhaoye.prodlinearity.csv.PojoExtractor;
 import com.zhaoye.prodlinearity.csv.models.CsvContainer;
-import com.zhaoye.prodlinearity.csv.models.Pojo;
+import com.zhaoye.prodlinearity.csv.models.InputPojo;
 import java.io.File;
 import java.util.List;
 import org.junit.Before;
@@ -27,9 +27,9 @@ public final class DefaultCsvFileParserTest
     @Before
     public void initialize() throws IOException
     {
-        Mockito.when(iterator.readAll()).thenReturn(pojoList);
-        Mockito.when(pojoExtractor.extract(pojoList)).thenReturn(csvContainer);
-        Mockito.when(csvMapper.readerFor(Pojo.class)
+        Mockito.when(iterator.readAll()).thenReturn(inputPojoList);
+        Mockito.when(pojoExtractor.extract(inputPojoList)).thenReturn(csvContainer);
+        Mockito.when(csvMapper.readerFor(InputPojo.class)
             .with(DefaultCsvFileParser.INPUT_CSV_SCHEMA)
             .readValues(csvFile)
         ).thenReturn(iterator);
@@ -62,6 +62,6 @@ public final class DefaultCsvFileParserTest
     @Mock(answer = Answers.RETURNS_DEEP_STUBS) private CsvMapper csvMapper;
     @Mock private PojoExtractor pojoExtractor;
     @Mock private MappingIterator iterator;
-    @Mock private List<Pojo> pojoList;
+    @Mock private List<InputPojo> inputPojoList;
     @Mock private CsvContainer csvContainer;
 }

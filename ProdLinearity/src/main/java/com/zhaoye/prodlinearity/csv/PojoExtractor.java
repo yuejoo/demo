@@ -1,7 +1,7 @@
 package com.zhaoye.prodlinearity.csv;
 
 import com.zhaoye.prodlinearity.csv.models.CsvContainer;
-import com.zhaoye.prodlinearity.csv.models.Pojo;
+import com.zhaoye.prodlinearity.csv.models.InputPojo;
 import java.util.List;
 
 /**
@@ -9,5 +9,5 @@ import java.util.List;
  */
 public interface PojoExtractor
 {
-    CsvContainer extract(final List<Pojo> pojoList);
+    CsvContainer extract(final List<InputPojo> inputPojoList);
 }

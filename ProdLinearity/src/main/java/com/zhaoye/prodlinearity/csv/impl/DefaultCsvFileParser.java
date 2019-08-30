@@ -5,7 +5,7 @@ import com.fasterxml.jackson.dataformat.csv.CsvMapper;
 import com.fasterxml.jackson.dataformat.csv.CsvSchema;
 import com.zhaoye.prodlinearity.csv.CsvFileParser;
 import com.zhaoye.prodlinearity.csv.PojoExtractor;
-import com.zhaoye.prodlinearity.csv.models.Pojo;
+import com.zhaoye.prodlinearity.csv.models.InputPojo;
 import com.zhaoye.prodlinearity.csv.models.CsvContainer;
 import com.zhaoye.prodlinearity.csv.models.Header;
 
@@ -21,14 +21,14 @@ public final class DefaultCsvFileParser implements CsvFileParser
     @Override
     public CsvContainer parse(final File csvFile) throws IOException
     {
-        final MappingIterator<Pojo> iterator = mapper.readerFor(Pojo.class)
+        final MappingIterator<InputPojo> iterator = mapper.readerFor(InputPojo.class)
             .with(INPUT_CSV_SCHEMA)
             .readValues(csvFile);
 
         //TODO: Catch running exceptions for data mis-mapping
-        final List<Pojo> pojoList = iterator.readAll();
+        final List<InputPojo> inputPojoList = iterator.readAll();
 
-        return pojoExtractor.extract(pojoList);
+        return pojoExtractor.extract(inputPojoList);
     }
 
     public DefaultCsvFileParser(

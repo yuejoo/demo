@@ -12,6 +12,8 @@ import com.zhaoye.prodlinearity.factory.models.Site;
 import com.zhaoye.prodlinearity.planner.DemandPlanner;
 import com.zhaoye.prodlinearity.planner.PreBuildDayProvider;
 import com.zhaoye.prodlinearity.planner.ProducePlanner;
+import java.util.Collection;
+import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -23,9 +25,9 @@ import java.util.TreeSet;
 public final class DefaultSitesFactory implements SitesFactory
 {
     @Override
-    public List<Site> create(final CsvContainer csvContainer)
+    public Collection<Site> create(final CsvContainer csvContainer)
     {
-        final List<Site> sites = new LinkedList<>();
+        final TreeSet<Site> sites = new TreeSet<>(Comparator.comparing(s -> s.name()));
 
         for(final Map.Entry<String, Map<String, TreeSet<Pair<Integer, Integer>>>> entry : csvContainer.value().entrySet())
         {
@@ -33,7 +35,7 @@ public final class DefaultSitesFactory implements SitesFactory
             final List<ProductionLine> productionLines = productionLinesFactory.create(entry.getValue());
             final List<ProductionLineWithDemands> productionLineWithDemands =
                 demandPlanner.plan(productionLines);
-            final List<ProductionLineWithProduces> productionLineWithProduces =
+            final Collection<ProductionLineWithProduces> productionLineWithProduces =
                 producePlanner.plan(productionLineWithDemands, preBuildDayProvider.provide());
 
             sites.add(
