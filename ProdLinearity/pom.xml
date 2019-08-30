@@ -95,6 +95,20 @@
   <build>
       <plugins>
         <plugin>
+          <artifactId>maven-jar-plugin</artifactId>
+          <executions>
+            <execution>
+              <id>default-jar</id>
+              <phase>none</phase>
+              <configuration>
+                <finalName>unwanted</finalName>
+                <classifier>unwanted</classifier>
+              </configuration>
+            </execution>
+          </executions>
+        </plugin>
+
+        <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-assembly-plugin</artifactId>
           <version>3.1.1</version>
@@ -159,26 +173,15 @@
                 <artifactId>picocli-codegen</artifactId>
                 <version>4.0.3</version>
               </path>
-            </annotationProcessorPaths>
-            <compilerArgs>
-              <arg>-Aproject=${project.groupId}/${project.artifactId}</arg>
-            </compilerArgs>
-          </configuration>
-        </plugin>
-
-        <!-- Enabling the Immutables -->
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-compiler-plugin</artifactId>
-          <version>3.8.1</version>
-          <configuration>
-            <annotationProcessorPaths>
               <path>
                 <groupId>org.immutables</groupId>
                 <artifactId>value</artifactId>
                 <version>2.7.4</version>
               </path>
             </annotationProcessorPaths>
+            <compilerArgs>
+              <arg>-Aproject=${project.groupId}/${project.artifactId}</arg>
+            </compilerArgs>
           </configuration>
         </plugin>
 
