@@ -6,5 +6,10 @@ import org.immutables.value.Value;
 @Value.Immutable
 public interface Day
 {
-    int day();
+    static Day of(final int value)
+    {
+        return ImmutableDay.builder().value(value).build();
+    }
+
+    int value();
 }

@@ -7,5 +7,16 @@ import java.util.LinkedList;
 @Value.Immutable
 public interface ProductionLineWithDemands extends ProductionLine
 {
-    LinkedList<Demand> demandPlans();
+    static ProductionLineWithDemands of(
+        final ProductionLine productionLine,
+        final LinkedList<Demand> demands
+    )
+    {
+        return ImmutableProductionLineWithDemands.builder()
+            .from(productionLine)
+            .demands(demands)
+            .build();
+    }
+
+    LinkedList<Demand> demands();
 }
