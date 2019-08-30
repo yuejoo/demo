@@ -116,7 +116,6 @@ public final class DefaultDemandPlannerTest
         );
     }
 
-
     @Parameters
     public static Collection getTestParameters() {
         return Arrays.asList(

@@ -23,8 +23,28 @@ import java.util.Random;
 import java.util.TreeSet;
 import net.bytebuddy.utility.RandomString;
 
+
 public class MockHelper
 {
+    public static Map<String, TreeSet<Pair<Integer, Integer>>>  createSingleProductToKeyDayDemandsPairMap(
+        final String productName,
+        final int[] days,
+        final int[][] keyDaysWithDemands
+    )
+    {
+        final Map<Integer, Integer> keyDaysWithDemandsMap = new HashMap<>();
+        for(int[] keyDayWithDemand : keyDaysWithDemands) keyDaysWithDemandsMap.put(keyDayWithDemand[0], keyDayWithDemand[1]);
+        final Map<String, TreeSet<Pair<Integer, Integer>>> mockMap = new HashMap<>();
+        final TreeSet<Pair<Integer, Integer>> mockSet = new TreeSet<>(Comparator.comparingInt(p -> p.fst));
+        for(int day : days)
+        {
+            if(keyDaysWithDemandsMap.containsKey(day)) mockSet.add(new Pair<>(day, keyDaysWithDemandsMap.get(day)));
+            else mockSet.add(new Pair<>(day, 0));
+        }
+        mockMap.put(productName, mockSet);
+        return mockMap;
+    }
+
     public static ProductionLine generateProductionLine(
         final String productName,
         final int[] days,
