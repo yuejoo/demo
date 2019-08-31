@@ -6,3 +6,7 @@
 
 ### 2. Planning 
 * Data Validation
+* Current Logic is based on the assumptions:
+1. Days are the raw number
+2. There is no missing days .
+3. Input demands are accumulated.
