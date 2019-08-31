@@ -8,7 +8,7 @@
 ### 2. Pre-process Components. (3-4 hours)
 The pre-process is single thread process. The function should be staight forward.
 * Design/Implement necessray models. (Easy by using the immutables lib)
-* Design/Implement functional classes. (CSV Parsing, I/O ~~Streaming loading~~, Internal model factory)
+* Design/Implement functional classes. (CSV Parsing, I/O Streaming loading, Internal model)
 * Unit tests.
 
 ### 3. Post-process Components. (3-4 hours)
@@ -19,7 +19,7 @@ Same as the pre-process components. The post-process is single thread process. T
 
 ### 4. Main-process Components. (3-4 hours)
 The Main Process components need thread pool to schedule multiple threading processes.
-* Design functional classes.  (Multi-Threading functions, Business Logic Function(Factory-Scheduler))
+* Design functional classes.  (~~Multi-Threading functions~~, Business Logic Function(Factory-Planner))
 * Unit tests.
 
 ### 5. Assembling. (3-4 hours)
