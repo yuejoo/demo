@@ -2,6 +2,7 @@ package com.zhaoye.prodlinearity.factory;
 
 import com.zhaoye.prodlinearity.csv.models.CsvContainer;
 import com.zhaoye.prodlinearity.factory.models.Site;
+import com.zhaoye.prodlinearity.planner.PreBuildDayProvider;
 import java.util.Collection;
 
 /**
@@ -9,5 +10,8 @@ import java.util.Collection;
  */
 public interface SitesFactory
 {
-    Collection<Site> create(final CsvContainer csvContainer);
+    Collection<Site> create(
+        final CsvContainer csvContainer,
+        final PreBuildDayProvider preBuildDayProvider
+    );
 }

@@ -26,7 +26,10 @@ import me.tongfei.progressbar.ProgressBar;
 public final class DefaultSitesFactory implements SitesFactory
 {
     @Override
-    public Collection<Site> create(final CsvContainer csvContainer)
+    public Collection<Site> create(
+        final CsvContainer csvContainer,
+        final PreBuildDayProvider preBuildDayProvider
+    )
     {
         // Sort the sites by name.
         final TreeSet<Site> sites = new TreeSet<>(Comparator.comparing(s -> s.name()));
@@ -62,21 +65,18 @@ public final class DefaultSitesFactory implements SitesFactory
         final ProductionLinesFactory productionLinesFactory,
         final DemandPlanner demandPlanner,
         final ProducePlanner producePlanner,
-        final PreBuildDayProvider preBuildDayProvider,
         final ProgressBarFactory progressBarFactory
     )
     {
         this.productionLinesFactory = productionLinesFactory;
         this.demandPlanner = demandPlanner;
         this.producePlanner = producePlanner;
-        this.preBuildDayProvider = preBuildDayProvider;
         this.progressBarFactory = progressBarFactory;
     }
 
     private final ProductionLinesFactory productionLinesFactory;
     private final DemandPlanner demandPlanner;
     private final ProducePlanner producePlanner;
-    private final PreBuildDayProvider preBuildDayProvider;
     private final ProgressBarFactory progressBarFactory;
 
     private static final String PROGRESS_BAR_INFO = "Planning for Sites:";

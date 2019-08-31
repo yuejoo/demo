@@ -25,6 +25,7 @@ public final class DefaultCsvFileWriter implements CsvFileWriter
             .writerFor(OutputPojo.class).with(OUTPUT_CSV_SCHEMA);
         final List<OutputPojo> outputPojoList = pojoCreator.create(sites);
 
+        System.out.println("Saving Csv File...");
         objectWriter.writeValues(file).writeAll(outputPojoList);
     }
 

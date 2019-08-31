@@ -18,7 +18,6 @@ import com.zhaoye.prodlinearity.planner.DemandPlanner;
 import com.zhaoye.prodlinearity.planner.PreBuildDayProvider;
 import com.zhaoye.prodlinearity.planner.ProducePlanner;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
@@ -66,7 +65,6 @@ public class DefaultSitesFactoryTest
             productionLinesFactory,
             demandPlanner,
             producePlanner,
-            preBuildDayProvider,
             progressBarFactory
         );
     }
@@ -75,7 +73,7 @@ public class DefaultSitesFactoryTest
     public void testCreate()
     {
         assertThat(
-            sitesFactory.create(inputCsvContainer),
+            sitesFactory.create(inputCsvContainer, preBuildDayProvider),
             is(
                 Arrays.asList(
                     ImmutableSite.builder()
@@ -93,7 +91,7 @@ public class DefaultSitesFactoryTest
     {
         Mockito.when(inputCsvContainer.value()).thenReturn(Collections.emptyMap());
         assertThat(
-            sitesFactory.create(inputCsvContainer),
+            sitesFactory.create(inputCsvContainer, preBuildDayProvider),
             is(Collections.emptySet())
         );
     }

@@ -21,6 +21,7 @@ public final class DefaultCsvFileParser implements CsvFileParser
     @Override
     public CsvContainer parse(final File csvFile) throws IOException
     {
+        System.out.println("Loading Csv File...");
         final MappingIterator<InputPojo> iterator = mapper.readerFor(InputPojo.class)
             .with(INPUT_CSV_SCHEMA)
             .readValues(csvFile);
