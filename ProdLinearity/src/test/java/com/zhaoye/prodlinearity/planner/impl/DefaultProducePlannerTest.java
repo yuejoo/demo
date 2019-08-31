@@ -9,7 +9,10 @@ import com.zhaoye.prodlinearity.helper.MockHelper;
 import com.zhaoye.prodlinearity.planner.ProducePlanner;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.List;
+import java.util.TreeSet;
+import java.util.stream.Collectors;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -49,7 +52,9 @@ public final class DefaultProducePlannerTest
                     keyDaysWithDemand,
                     demands,
                     produces
-                ))
+                )).stream().collect(Collectors.toCollection(()->new TreeSet<>(
+                    Comparator.comparing(pl -> pl.product().value())
+            )))
         };
     }
 
@@ -177,7 +182,7 @@ public final class DefaultProducePlannerTest
     public DefaultProducePlannerTest(
         final int inputPreBuildDays,
         final List<ProductionLineWithDemands> inputProductionLines,
-        final List<ProductionLineWithProduces> expectedProductionLinesWithProduces
+        final Collection<ProductionLineWithProduces> expectedProductionLinesWithProduces
     )
     {
         this.inputPreBuildDays = inputPreBuildDays;
@@ -188,5 +193,5 @@ public final class DefaultProducePlannerTest
     private ProducePlanner producePlanner;
     private int inputPreBuildDays;
     private List<ProductionLineWithDemands> inputProductionLines;
-    private List<ProductionLineWithProduces> expectedProductionLinesWithProduces;
+    private Collection<ProductionLineWithProduces> expectedProductionLinesWithProduces;
 }

@@ -9,22 +9,28 @@ import com.zhaoye.prodlinearity.factory.models.Produce;
 import com.zhaoye.prodlinearity.factory.models.ProductionLineWithDemands;
 import com.zhaoye.prodlinearity.factory.models.ProductionLineWithProduces;
 import com.zhaoye.prodlinearity.planner.ProducePlanner;
+import java.util.Collection;
+import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
+import java.util.TreeSet;
 import java.util.stream.Collectors;
 
 public final class DefaultProducePlanner implements ProducePlanner
 {
     // TODO: Think about the non-raw days.
     @Override
-    public List<ProductionLineWithProduces> plan(
+    public Collection<ProductionLineWithProduces> plan(
         final List<ProductionLineWithDemands> productionLineWithDemands,
         final int preBuildDays
     )
     {
         return productionLineWithDemands.stream().map(pld -> planProduces(pld, preBuildDays))
-            .collect(Collectors.toList());
+            .collect(Collectors.toCollection(() ->
+                // Sorting by ProductName.
+                new TreeSet<>(Comparator.comparing(pl->pl.product().value())))
+            );
     }
 
     private ProductionLineWithProduces planProduces(

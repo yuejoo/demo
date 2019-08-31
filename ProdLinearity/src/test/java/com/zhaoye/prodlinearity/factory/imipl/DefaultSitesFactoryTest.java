@@ -6,13 +6,13 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import com.sun.tools.javac.util.Pair;
 import com.zhaoye.prodlinearity.csv.models.CsvContainer;
 import com.zhaoye.prodlinearity.factory.ProductionLinesFactory;
+import com.zhaoye.prodlinearity.factory.ProgressBarFactory;
 import com.zhaoye.prodlinearity.factory.SitesFactory;
 import com.zhaoye.prodlinearity.factory.impl.DefaultSitesFactory;
 import com.zhaoye.prodlinearity.factory.models.ImmutableSite;
 import com.zhaoye.prodlinearity.factory.models.ProductionLine;
 import com.zhaoye.prodlinearity.factory.models.ProductionLineWithDemands;
 import com.zhaoye.prodlinearity.factory.models.ProductionLineWithProduces;
-import com.zhaoye.prodlinearity.factory.models.Site;
 import com.zhaoye.prodlinearity.helper.MockHelper;
 import com.zhaoye.prodlinearity.planner.DemandPlanner;
 import com.zhaoye.prodlinearity.planner.PreBuildDayProvider;
@@ -26,6 +26,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.stream.Collectors;
+import me.tongfei.progressbar.ProgressBar;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -59,12 +60,14 @@ public class DefaultSitesFactoryTest
         )).thenReturn(
             productionLineWithProducesList
         );
+        Mockito.when(progressBarFactory.get("Planning for Sites:", csvContainerValue.size())).thenReturn(progressBar);
 
         this.sitesFactory = new DefaultSitesFactory(
             productionLinesFactory,
             demandPlanner,
             producePlanner,
-            preBuildDayProvider
+            preBuildDayProvider,
+            progressBarFactory
         );
     }
 
@@ -82,6 +85,7 @@ public class DefaultSitesFactoryTest
                 ).stream().collect(Collectors.toSet())
             )
         );
+        Mockito.verify(progressBar, Mockito.times(1)).step();
     }
 
     @Test
@@ -100,7 +104,6 @@ public class DefaultSitesFactoryTest
     private static String SITE_NAME = MockHelper.RANDOM_STRING.nextString();
 
     @Mock private CsvContainer inputCsvContainer;
-    @Mock private Collection<Site> expectedSites;
 
     @Mock private ProductionLinesFactory productionLinesFactory;
     @Mock private DemandPlanner demandPlanner;
@@ -109,6 +112,8 @@ public class DefaultSitesFactoryTest
     @Mock private Map csvContainerValue;
     @Mock private Map.Entry<String, Map<String, TreeSet<Pair<Integer, Integer>>>> entry;
     @Mock private Map<String, TreeSet<Pair<Integer, Integer>>> productToDayDemandsPairMap;
+    @Mock private ProgressBarFactory progressBarFactory;
+    @Mock private ProgressBar progressBar;
 
     @Mock private List<ProductionLine> productionLines;
     @Mock private List<ProductionLineWithDemands> productionLineWithDemands;

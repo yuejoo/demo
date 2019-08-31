@@ -1,5 +1,6 @@
 package com.zhaoye.prodlinearity;
 
+import com.zhaoye.prodlinearity.csv.impl.DefaultPojoCreatorTest;
 import com.zhaoye.prodlinearity.csv.impl.DefaultPojoExtractorTest;
 import com.zhaoye.prodlinearity.factory.imipl.DefaultProductionLinesFactoryTest;
 import com.zhaoye.prodlinearity.planner.impl.DefaultDemandPlannerTest;
@@ -13,6 +14,7 @@ import org.junit.runners.Suite;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
     DefaultPojoExtractorTest.class,
+    DefaultPojoCreatorTest.class,
     DefaultDemandPlannerTest.class,
     DefaultProducePlannerTest.class,
     DefaultProductionLinesFactoryTest.class

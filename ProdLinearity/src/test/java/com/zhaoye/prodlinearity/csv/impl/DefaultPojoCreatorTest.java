@@ -5,6 +5,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 import com.zhaoye.prodlinearity.csv.PojoCreator;
 import com.zhaoye.prodlinearity.csv.models.OutputPojo;
+import com.zhaoye.prodlinearity.factory.ProgressBarFactory;
 import com.zhaoye.prodlinearity.factory.models.ImmutableSite;
 import com.zhaoye.prodlinearity.factory.models.ProductionLineWithProduces;
 import com.zhaoye.prodlinearity.factory.models.Site;
@@ -16,11 +17,14 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.stream.Collectors;
+import me.tongfei.progressbar.ProgressBar;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
+import org.mockito.Mock;
+import org.mockito.Mockito;
 
 
 @RunWith(Parameterized.class)
@@ -28,7 +32,7 @@ public final class DefaultPojoCreatorTest
 {
     @Before
     public void initialize() {
-        this.pojoCreator = new DefaultPojoCreator();
+        this.pojoCreator = new DefaultPojoCreator(progressBarFactory);
     }
 
     @Parameters
@@ -68,6 +72,7 @@ public final class DefaultPojoCreatorTest
     @Test
     public void testCreate()
     {
+        Mockito.when(progressBarFactory.get("Persisting:", inputSiteList.size())).thenReturn(progressBar);
         final ListIterator<OutputPojo> resultIterator = pojoCreator.create(inputSiteList).listIterator();
         final ListIterator<OutputPojo> expectedIterator = expectedResult.listIterator();
 
@@ -84,6 +89,7 @@ public final class DefaultPojoCreatorTest
         }
 
         assertThat(resultIterator.hasNext(), is(expectedIterator.hasNext()));
+        Mockito.verify(progressBar, Mockito.times(inputSiteList.size())).step();
     }
 
     public DefaultPojoCreatorTest(
@@ -95,6 +101,8 @@ public final class DefaultPojoCreatorTest
         this.expectedResult = expectedResult;
     }
 
+    private ProgressBarFactory progressBarFactory = Mockito.mock(ProgressBarFactory.class);
+    private ProgressBar progressBar = Mockito.mock(ProgressBar.class);
     private List<OutputPojo> expectedResult;
     private Collection<Site> inputSiteList;
     private PojoCreator pojoCreator;
