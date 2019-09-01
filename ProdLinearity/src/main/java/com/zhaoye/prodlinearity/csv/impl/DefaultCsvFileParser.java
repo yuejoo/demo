@@ -9,6 +9,7 @@ import com.zhaoye.prodlinearity.csv.models.InputPojo;
 import com.zhaoye.prodlinearity.csv.models.CsvContainer;
 import com.zhaoye.prodlinearity.csv.models.Header;
 
+import com.zhaoye.prodlinearity.exceptions.InvalidInputFileException;
 import java.io.File;
 import java.io.IOException;
 import java.util.*;
@@ -22,15 +23,27 @@ public final class DefaultCsvFileParser implements CsvFileParser
     public CsvContainer parse(
         final File csvFile,
         final CsvSchema csvSchema
-    ) throws IOException
+    ) throws IOException, InvalidInputFileException
     {
         System.out.println("Loading Csv File...");
         final MappingIterator<InputPojo> iterator = mapper.readerFor(InputPojo.class)
             .with(csvSchema)
             .readValues(csvFile);
 
-        //TODO: Catch running exceptions for data mis-mapping
-        final List<InputPojo> inputPojoList = iterator.readAll();
+        List<InputPojo> inputPojoList = null;
+        try
+        {
+            inputPojoList = iterator.readAll();
+        }
+        catch (IOException e)
+        {
+            throw new InvalidInputFileException(e.getMessage());
+        }
+
+        if(inputPojoList == null || inputPojoList.isEmpty())
+        {
+            throw new InvalidInputFileException("The input file is Empty. Please use a valid input file.");
+        }
 
         return pojoExtractor.extract(inputPojoList);
     }

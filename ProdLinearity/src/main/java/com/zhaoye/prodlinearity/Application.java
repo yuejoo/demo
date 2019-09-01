@@ -6,6 +6,7 @@ import picocli.CommandLine;
 
 import java.io.File;
 import java.util.concurrent.Callable;
+import picocli.CommandLine.ExitCode;
 
 @CommandLine.Command(name = "ProductionLinearity", description = "Production Linearity tool for helping to plan the production.")
 public final class Application implements Callable<Integer>
@@ -19,8 +20,8 @@ public final class Application implements Callable<Integer>
     @Override
     public Integer call() {
         try {
-            File inputFile = new File(inputFilePath);
-            File outputFile = new File(outputFilePath);
+            final File inputFile = new File(inputFilePath);
+            final File outputFile = new File(outputFilePath);
 
             Modules.CSV_FILE_WRITER.write(
                 outputFile,
@@ -39,9 +40,10 @@ public final class Application implements Callable<Integer>
         catch (Exception e)
         {
             System.out.println(e);
+            return ExitCode.USAGE;
 
         }
-        return CommandLine.ExitCode.OK;
+        return ExitCode.OK;
     }
 
 

@@ -2,6 +2,7 @@ package com.zhaoye.prodlinearity.csv;
 
 import com.fasterxml.jackson.dataformat.csv.CsvSchema;
 import com.zhaoye.prodlinearity.csv.models.CsvContainer;
+import com.zhaoye.prodlinearity.exceptions.InvalidInputFileException;
 import java.io.File;
 import java.io.IOException;
 
@@ -13,5 +14,5 @@ public interface CsvFileParser
     CsvContainer parse(
         final File csvFile,
         final CsvSchema csvSchema
-    ) throws IOException;
+    ) throws IOException, InvalidInputFileException;
 }
