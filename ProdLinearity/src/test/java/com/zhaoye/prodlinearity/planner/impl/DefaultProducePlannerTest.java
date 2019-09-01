@@ -59,6 +59,34 @@ public final class DefaultProducePlannerTest
     }
 
     /**
+     * TestCase.0:
+     * Non-Consecutive Days in the input
+     * +-------------------------+
+     * |          Input          |
+     * +---------+---+---+---+---+
+     * | Day:    | 1 | 5 | 6 | 7 |
+     * +---------+---+---+---+---+
+     * | Demand: | 0 | 0 | 3 | 3 |
+     * +---------+---+---+---+---+
+     * |          Output         |
+     * +---------+---+---+---+---+
+     * | Produce | 1 | 2 | 3 | 3 |
+     * +---------+---+---+---+---+
+     */
+    private static Object[] createTestCase0()
+    {
+        int[] days = {1, 5, 6, 7};
+        int[] demands = {0, 0, 3, 3};
+        int[] produces = {1, 2, 3, 3};
+
+        int[][] keyDaysWithDemand = {{6, 3}};
+        final String productName = "Product1";
+        return createSingleProductTestPair(
+            productName, days, keyDaysWithDemand, demands, produces, 3
+        );
+    }
+
+    /**
      * TestCase.1:
      * No-Demands at all. (no key days)
      * +-------------------------+
@@ -163,6 +191,7 @@ public final class DefaultProducePlannerTest
     public static Collection getTestParameters() {
         return Arrays.asList(
             new Object[][] {
+                createTestCase0(),
                 createTestCase1(),
                 createTestCase2(),
                 createTestCase3(),
@@ -174,8 +203,8 @@ public final class DefaultProducePlannerTest
     public void testPlan()
     {
         assertThat(
-            producePlanner.plan(inputProductionLines, inputPreBuildDays),
-            is(expectedProductionLinesWithProduces)
+            producePlanner.plan(inputProductionLines, inputPreBuildDays).toArray(),
+            is(expectedProductionLinesWithProduces.toArray())
         );
     }
 

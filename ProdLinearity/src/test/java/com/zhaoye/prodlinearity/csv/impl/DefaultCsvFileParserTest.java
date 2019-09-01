@@ -42,7 +42,7 @@ public final class DefaultCsvFileParserTest
             csvMapper,
             pojoExtractor
         );
-        assertThat(csvFileParser.parse(csvFile), is(csvContainer));
+        assertThat(csvFileParser.parse(csvFile, DefaultCsvFileParser.INPUT_CSV_SCHEMA), is(csvContainer));
     }
 
     @Test(expected = IOException.class)
@@ -53,7 +53,7 @@ public final class DefaultCsvFileParserTest
             csvMapper,
             pojoExtractor
         );
-        csvFileParser.parse(csvFile);
+        csvFileParser.parse(csvFile, DefaultCsvFileParser.INPUT_CSV_SCHEMA);
     }
 
     //TODO: Test Parsing RunTime Exceptions.

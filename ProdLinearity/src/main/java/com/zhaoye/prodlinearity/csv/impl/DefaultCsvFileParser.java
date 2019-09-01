@@ -19,11 +19,14 @@ import java.util.*;
 public final class DefaultCsvFileParser implements CsvFileParser
 {
     @Override
-    public CsvContainer parse(final File csvFile) throws IOException
+    public CsvContainer parse(
+        final File csvFile,
+        final CsvSchema csvSchema
+    ) throws IOException
     {
         System.out.println("Loading Csv File...");
         final MappingIterator<InputPojo> iterator = mapper.readerFor(InputPojo.class)
-            .with(INPUT_CSV_SCHEMA)
+            .with(csvSchema)
             .readValues(csvFile);
 
         //TODO: Catch running exceptions for data mis-mapping
@@ -49,7 +52,5 @@ public final class DefaultCsvFileParser implements CsvFileParser
         .addColumn(Header.PRODUCT.getName())
         .addColumn(Header.DAY.getName())
         .addColumn(Header.DEMAND.getName())
-        .build()
-        // TODO: Add options to decide if there is Header for the CSV.
-        .withHeader();
+        .build();
 }

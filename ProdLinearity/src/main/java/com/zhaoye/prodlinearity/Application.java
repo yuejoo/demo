@@ -1,5 +1,6 @@
 package com.zhaoye.prodlinearity;
 
+import com.zhaoye.prodlinearity.csv.impl.DefaultCsvFileParser;
 import com.zhaoye.prodlinearity.planner.impl.DefaultPreBuildDayProvider;
 import picocli.CommandLine;
 
@@ -24,7 +25,13 @@ public final class Application implements Callable<Integer>
             Modules.CSV_FILE_WRITER.write(
                 outputFile,
                 Modules.SITES_FACTORY.create(
-                    Modules.CSV_FILE_PARSER.parse(inputFile),
+                    Modules.CSV_FILE_PARSER.parse(
+                        inputFile,
+                        withoutHeader?
+                            DefaultCsvFileParser.INPUT_CSV_SCHEMA
+                            :
+                            DefaultCsvFileParser.INPUT_CSV_SCHEMA.withHeader()
+                    ),
                     new DefaultPreBuildDayProvider(preBuildDays)
                 )
             );
@@ -46,4 +53,7 @@ public final class Application implements Callable<Integer>
 
     @CommandLine.Option(names = {"-o", "--OutputFilePath"}, description = "The input csv file.", required = true)
     private String outputFilePath;
+
+    @CommandLine.Option(names = "--withoutHeader", description = "The input csv file has no header.")
+    private boolean withoutHeader;
 }

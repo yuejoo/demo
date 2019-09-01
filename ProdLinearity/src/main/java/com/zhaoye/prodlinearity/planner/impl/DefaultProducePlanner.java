@@ -19,7 +19,6 @@ import java.util.stream.Collectors;
 
 public final class DefaultProducePlanner implements ProducePlanner
 {
-    // TODO: Think about the non-raw days.
     @Override
     public Collection<ProductionLineWithProduces> plan(
         final List<ProductionLineWithDemands> productionLineWithDemands,
@@ -33,6 +32,9 @@ public final class DefaultProducePlanner implements ProducePlanner
             );
     }
 
+    /**
+     * More details for planning logic is in https://github.com/yuejoo/demo/blob/master/docs/PlanningLogic.md
+     */
     private ProductionLineWithProduces planProduces(
         final ProductionLineWithDemands productionLineWithDemands,
         final int preBuildDays
@@ -41,36 +43,37 @@ public final class DefaultProducePlanner implements ProducePlanner
         final LinkedList<Produce> produces = new LinkedList<>();
         final LinkedList<Demand> demands = productionLineWithDemands.demands();
         final LinkedList<Day> days = productionLineWithDemands.days();
+        final LinkedList<KeyDayWithDemand> keyDayWithDemands = productionLineWithDemands.keyDayWithDemands();
 
         final ListIterator<Demand> demandsIterator = demands.listIterator();
         final ListIterator<Day> daysIterator = days.listIterator();
 
         final ListIterator<KeyDayWithDemand> keyDayWithDemandsIterator =
-            productionLineWithDemands.keyDayWithDemands().listIterator();
+            keyDayWithDemands.listIterator();
+
+        final LinkedList<Produce> queue = new LinkedList<>();
 
         while(daysIterator.hasNext())
         {
             final Day currentDay = daysIterator.next();
             final Demand currentDemand = demandsIterator.next();
-            Produce produce = Produce.of(currentDemand.amount());
-            if(keyDayWithDemandsIterator.hasNext()) {
-                KeyDayWithDemand mostRecentKeyDay = keyDayWithDemandsIterator.next();
-                if(shouldPreProduce(mostRecentKeyDay, currentDay, preBuildDays))
-                {
-                    int previousAmount = produces.isEmpty() ? 0 : produces.getLast().amount().value();
-                    int amount =
-                        (mostRecentKeyDay.demand().amount().value() - previousAmount)/(mostRecentKeyDay.day().value() - currentDay.value() + 1);
+            final Produce produce = Produce.of(currentDemand.amount());
 
-                    produce = Produce.of(Amount.of(previousAmount + amount ));
-                }
-
-                if (mostRecentKeyDay.day().value() > currentDay.value())
-                {
-                    keyDayWithDemandsIterator.previous();
-                }
+            if(keyDayWithDemandsIterator.hasNext())
+            {
+                planningForPreDays(
+                    queue,
+                    keyDayWithDemandsIterator,
+                    currentDay,
+                    produce,
+                    produces,
+                    preBuildDays
+                );
             }
-
-            produces.add(produce);
+            else // If there is no KeyDaysAfter
+            {
+                produces.add(produce);
+            }
         }
 
         return ImmutableProductionLineWithProduces
@@ -80,14 +83,37 @@ public final class DefaultProducePlanner implements ProducePlanner
             .build();
     }
 
-    private boolean shouldPreProduce(
-        final KeyDayWithDemand mostRecentKeyDay,
+    private void planningForPreDays(
+        final LinkedList<Produce> queue,
+        final ListIterator<KeyDayWithDemand> keyDayWithDemandsIterator,
         final Day currentDay,
+        final Produce estimateProduce,
+        final LinkedList<Produce> plannedProduces,
         final int preBuildDays
     )
     {
-        return mostRecentKeyDay.day().value() - currentDay.value() <= preBuildDays
-            &&
-            mostRecentKeyDay.day().value() != currentDay.value();
+        final KeyDayWithDemand mostRecentKeyDayWithDemand = keyDayWithDemandsIterator.next();
+        if(currentDay.value() < mostRecentKeyDayWithDemand.day().value())
+        {
+            queue.add(estimateProduce);
+            keyDayWithDemandsIterator.previous();
+        }
+        else {
+            // Skipping the non-pre build days.
+            while (queue.size() > preBuildDays) {
+                plannedProduces.add(queue.pollFirst());
+            }
+            // Planning for Prebuild days.
+            while (!queue.isEmpty()) {
+                int previousAmount = plannedProduces.isEmpty() ? 0 : plannedProduces.getLast().amount().value();
+                int amount = (estimateProduce.amount().value() - previousAmount)/(queue.size() + 1);
+                plannedProduces.add(
+                    Produce.of(Amount.of(previousAmount + amount))
+                );
+                queue.pollFirst();
+            }
+            // Add the KeyDay
+            plannedProduces.add(estimateProduce);
+        }
     }
 }
