@@ -16,6 +16,10 @@ Looping throught the sorted demands/days list, if the current day falls in the p
 The initial idea will only work in the assumption that the input days are in the consecutive raw days. (Factory working on consective days.)
 However if the factory is not working on the consecutive days. (1 3 6 8 9). We will only plan the produce with wrong number which assumes that all days are consecutive.
 https://github.com/yuejoo/demo/commit/67588f0265ceda8993ebdff187a6a066b439f513
+
+The remaining uncertain question is that:**how do we define the pre-build days if the day is not in the input file?**
+For this current fix, pre-build days will take acount number of exisiting days before the keyDays. (ex. days:1, 3, 6, 8, 9 with Prebuild-Day-3 for day 9, the available prebuild days will be 3 6 8)
+
 ### Fix
 Updating the original planning logic with implementing a queue to temporarily hold the days before reaching the most recent keyDays. When the current day reaches to the keyday, re-planning those demands in the queue with poping from the front. (calculating the two days' distance by current queue's size)
 
