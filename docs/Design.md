@@ -74,9 +74,9 @@ Dagger or Guice.
 #### Immutables Libaray
 https://immutables.github.io/
 #### Multithreading (TODO:)
-Need some alternatives for using a multithreading work.
+~~Need some alternatives for using a multithreading work.
 
 
-### Remaining questions
+~~### Remaining questions
 * How do we test the multithreading functions?
-* How do we handle the automated build/complile framewrok.
+* How do we handle the automated build/complile framewrok. (maven)
