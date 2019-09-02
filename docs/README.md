@@ -44,10 +44,10 @@ Please refer to the file ‘production_linearity.3.csv’ and ‘production_line
 * Performance tuning options. (Processing Speed, memory usage, etc...) (**Not implemented**)
 
 ## Assumption
-* 0. In the input file for each factory-product pair it will only have it's days and demand accumulated.
-* 1. The single factory can produce multiple product. (multiple demands for different products)
-* 2. The factory can only produce product during the prebuild days or the days between two demand key dates (for each product).
-* 3. Assume input file could have 100,000 lines. 100 x 100 x 100 for site x product x days.
+* In the input file for each factory-product pair it will only have it's days (consecutively increasing) with demand accumulated.
+* The single factory can produce multiple product. (multiple demands for different products)
+* The factory can only produce product during the prebuild days or the days between two demand key dates (for each product).
+* Assume input file could have 100,000 lines. 100 x 100 x 100 for site x product x days.
 
 ## Docs QuickLink
 ### 1. Design 
