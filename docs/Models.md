@@ -74,3 +74,8 @@ Map<ProductName, ProductionLine>> -> List<ProductionLine>
 ```
 Map<ProductName, ProductionLine>> -> List<ProductionLineWithDemands>
 ```
+
+* Plan Produces for the ProductionLines
+```
+List<ProductionLineWithDemands> -> List<ProductionLineWithProduces>
+```
