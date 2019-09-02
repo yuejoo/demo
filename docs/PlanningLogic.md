@@ -14,7 +14,7 @@ Looping throught the sorted demands/days list, if the current day falls in the p
 
 ## Updated
 The initial idea will only work in the assumption that the input days are in the consecutive raw days. (Factory working on consective days.)
-However if the factory is not working on the consecutive days. (1 3 6 8 9). We will only plan the produce with wrong number which assumes that all days are consecutive.
+However if the factory is not working on the consecutive days. (1 3 6 8 9). We will plan the produce with wrong number which assumes that all days are consecutive.
 https://github.com/yuejoo/demo/commit/67588f0265ceda8993ebdff187a6a066b439f513
 
 The remaining uncertain question is that:**how do we define the pre-build days if the day is not in the input file?**
