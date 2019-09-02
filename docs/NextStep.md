@@ -6,3 +6,6 @@ A input data validator should be useful.
 * Performance
 Current the most time-consuming steps are loading and saving the csv files in the memory when dealing with the large scal files.
 And applying the produce-consumer pattern (the Solution-1) could be an option to have a performance enhancement.
+
+* Performance Tunning Options
+JVM options tunning.
