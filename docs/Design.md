@@ -1,5 +1,5 @@
 - [Solutions](#solutions)
-  * [Proposal 0. Process for all](#proposal-0-process-for-all)
+  * [Proposal 0. Process for all (Chosen)](#proposal-0-process-for-all)
     + [Diagram](#diagram)
     + [Estimates: (Small)](#estimates---small-)
       - [Pros:](#pros-)
@@ -22,7 +22,7 @@
 
 ## Solutions
 
-### Proposal 0. Process for all (Choosen)
+### Proposal 0. Process for all (Chosen)
 * 1. The CLI load the file in memory at one time with structured data model.
 * 2. Porcess the in memory data model.
 * 3. Translate the in meory data model to Output file.
@@ -74,9 +74,9 @@ Dagger or Guice.
 #### Immutables Libaray
 https://immutables.github.io/
 #### Multithreading (TODO:)
-~~Need some alternatives for using a multithreading work.
+~~Need some alternatives for using a multithreading work.~~
 
 
-~~### Remaining questions
-* How do we test the multithreading functions?
-* How do we handle the automated build/complile framewrok. (maven)
+~~### Remaining questions~~
+~~* How do we test the multithreading functions?~~
+~~* How do we handle the automated build/complile framewrok. (maven)~~
