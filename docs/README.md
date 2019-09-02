@@ -35,13 +35,13 @@ Please refer to the file ‘production_linearity.3.csv’ and ‘production_line
 
 
 ## Requirements
-* 1. A functional **CLI tool** which having two arguments "Pre-Build Days" and "Input CSV file."
-* 2. Testing (Unit Testing& Integration Testing)
-* 3. Handle the exception in a meaningful way.
+* A **CLI tool** which having two arguments "Pre-Build Days" and "Input CSV file." as input (**Done**)
+* Testing (Unit Testing& Integration Testing) (**Done**)
+* Handling the exceptions. (**Done**)
 
 ## Good To Have
-* Other CLI information  (Showing current Processing state, CLI help information etc)
-* Performance tuning options. (Processing Speed, memory usage, etc...)
+* Other CLI information  (Showing current Processing state, CLI help information etc) (**Done**)
+* Performance tuning options. (Processing Speed, memory usage, etc...) (**Not implemented**)
 
 ## Assumption
 * 1. The single factory can produce multiple product. (multiple demands for different products)
