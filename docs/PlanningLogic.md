@@ -3,9 +3,10 @@
 We have two-steps method to finally plan the prodces for each FC-Product pair.
 * 1. Fufill the demand gap
 Reversely looping through the sorted days list, get the latest keyday and fill the current day with keydays demand. 
-(the left process in the following diagram)
+see the **left** process in the following diagram.
 * 2. Planning the produces
-Looping throught the sorted demands/days list, if the current day falls in the preBuild days gap, get the mostRecent keyday and comupte the average produces it needs for that day with adding the last days' produce status.
+Looping throught the sorted demands/days list, if the current day falls in the preBuild days gap, get the mostRecent keyday and comupte the average produces it needs for that day with adding the last days' produce status. see the **right** process in the following diagram.
+
 <p align="left">
   <img src="https://github.com/yuejoo/demo/blob/master/docs/PlanningLogic.svg">
 </p>
