@@ -30,4 +30,21 @@ Please refer to the file ‘production_linearity.3.csv’ and ‘production_line
 * 2. The factory can only produce product during the prebuild days or the days between two demand key dates (for each product).
 * 3. Assume input file could have 100,000 lines. 100 x 100 x 100 for site x product x days.
 
+## Docs QuickLink
+### 1. Design 
+https://github.com/yuejoo/demo/blob/master/docs/Design.md
 
+### 2. Models
+https://github.com/yuejoo/demo/blob/master/docs/Models.md
+
+### 3. PlanningLogic
+https://github.com/yuejoo/demo/blob/master/docs/PlanningLogic.md
+
+### 4. Task Break Down
+https://github.com/yuejoo/demo/blob/master/docs/TaskBreakDown.md
+
+### 5.CommandLineTool Usage
+https://github.com/yuejoo/demo/blob/master/docs/CommandLineTool.md
+
+### 6.Exception handling.
+https://github.com/yuejoo/demo/blob/master/docs/CommandLineTool.md
