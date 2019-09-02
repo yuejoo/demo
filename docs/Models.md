@@ -1,37 +1,3 @@
-## Reader
-CS
-
-## Parsing 
-* Load the table
-```
-site,product,day,demand
-0032,P001A,0,0
-0032,P001A,1,0
-0032,P001A,2,0
-```
-* Parsing to the POJO
-```
-class POJO
-{
-    String site; String product; String day; String demand;
-}
-```
-* Convert to the Map
-```
-Map<StringName, Map<StringName, Tree<Pair<Integer, Integer>>>> .
-```
-
-* Looping through the sites.
-* Convert to the ProductionLines
-```
-Map<ProductName, ProductionLine>> -> List<ProductionLine>
-```
-
-* Plan demand for the ProductionLines
-```
-Map<ProductName, ProductionLine>> -> List<ProductionLineWithDemands>
-```
-
 ## Models
 ```
 // Site
@@ -78,4 +44,33 @@ public interface Amount {
 public interface Day {
     int value();
 }
+```
+## Parsing Process
+* Load the table
+```
+site,product,day,demand
+0032,P001A,0,0
+0032,P001A,1,0
+0032,P001A,2,0
+```
+* Parsing to the POJO
+```
+class POJO
+{
+    String site; String product; String day; String demand;
+}
+```
+* Convert to the Map
+```
+Map<StringName, Map<StringName, Tree<Pair<Integer, Integer>>>> .
+```
+* Looping through the sites.
+* Convert the Map<StringName, Tree<Pair<Integer, Integer>>> to the ProductionLines
+```
+Map<ProductName, ProductionLine>> -> List<ProductionLine>
+```
+
+* Plan demand for the ProductionLines
+```
+Map<ProductName, ProductionLine>> -> List<ProductionLineWithDemands>
 ```
