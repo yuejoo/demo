@@ -48,3 +48,6 @@ https://github.com/yuejoo/demo/blob/master/docs/CommandLineTool.md
 
 ### 6.Exception handling.
 https://github.com/yuejoo/demo/blob/master/docs/CommandLineTool.md
+
+### 7. Next step
+https://github.com/yuejoo/demo/blob/master/docs/NextStep.md
