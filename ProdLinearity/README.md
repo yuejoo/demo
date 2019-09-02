@@ -1,5 +1,7 @@
-## Running
+## Build
+mvn clean package
 
+## Run
 sh bin/prodlinearity.sh -p <PreBuildDays> -i <InputFile> -o <OutputFile>
 
 
